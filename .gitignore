@@ -1,0 +1,5 @@
+mlartifacts/
+__pycache__/
+*.pyc
+
+mlruns/    
