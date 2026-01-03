@@ -9,7 +9,7 @@ csv_path = os.path.join(dataset_path, "AIML Dataset.csv")
 
 # PATH CONFIG
 RAW_PATH = Path(csv_path)
-OUTPUT_PATH = Path("Eksperimen_fadillah-akbar/preprocessing/data_clean.csv")
+OUTPUT_PATH = Path("preprocessing/data_clean.csv")
 
 # LOAD DATA
 def load_data(path: Path, nrows : int) -> pd.DataFrame:
@@ -41,7 +41,12 @@ def main():
 
     df_clean = preprocess(df)
 
-    df_clean.to_csv(OUTPUT_PATH, index=False)
+    x = 500000
+    n = len(df_clean)
+    df_sample = (
+        df_clean.sample(n=min(x, n), random_state=42)
+    )
+    df_sample.to_csv(OUTPUT_PATH, index=False)
 
 
 if __name__ == "__main__":
